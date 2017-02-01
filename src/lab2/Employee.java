@@ -29,31 +29,38 @@ public class Employee {
     private boolean movedIn;
     private String cubeId;
     private Date orientationDate;
+    
+    public void hiringProcess(){
+        this.meetWithHrForBenefitAndSalryInfo();
+        
+    }
 
     public Employee(String firstName, String lastName, String ssn) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ssn = ssn;
     }
+    
+    public String getFormattedDate(){
+        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
+        return sdf.format(orientationDate);        
+        
+    }
 
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.
     public void meetWithHrForBenefitAndSalryInfo() {
         metWithHr = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
-        System.out.println(firstName + " " + lastName + " met with Hr on "
-            + fmtDate);
+        
     }
 
-    // Assume this must be performed first, and assume that an employee
+    // Assume this must be performed second, and assume that an employee
     // would only do this once, upon being hired.:
     public void meetDepartmentStaff() {
         metDeptStaff = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+        
         System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
-            + fmtDate);
+            + getFormattedDate());
     }
 
     // Assume this must be performed third. And assume that because department
@@ -61,10 +68,9 @@ public class Employee {
     // independently from other classes.
     public void reviewDeptPolicies() {
         reviewedDeptPolicies = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+               
         System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
-            + fmtDate);
+            + getFormattedDate());
     }
 
     // Assume this must be performed 4th. And assume that because employees
@@ -87,6 +93,9 @@ public class Employee {
     // allowed through validation.
     
     public void setFirstName(String firstName) {
+        if(firstName == null || firstName.length()<2){
+            System.out.println("Invalid information");
+        }
        this.firstName = firstName;
     }
 
@@ -95,6 +104,9 @@ public class Employee {
     }
 
     public void setLastName(String lastName) {
+        if(lastName == null || lastName.length()<2){
+            System.out.println("Invalid information");
+        }
        this.lastName = lastName;
     }
 
@@ -103,6 +115,9 @@ public class Employee {
     }
 
     public void setSsn(String ssn) {
+        if(ssn == null || ssn.length()<9){
+            System.out.println("Invalid information");
+        }
         this.ssn = ssn;
     }
 
