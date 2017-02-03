@@ -46,6 +46,7 @@ public class Employee {
     private boolean movedIn;
     private String cubeId;
     private Date orientationDate;
+    private ReportService reportService;
 
     public Employee(String firstName, String lastName, String ssn) {
         // Using setter method guarantees validation will be performed
@@ -53,6 +54,8 @@ public class Employee {
         setFirstName(firstName);
         setLastName(lastName);
         setSsn(ssn);
+        
+        reportService = new ReportService();
     }
     
     /* 
@@ -89,8 +92,9 @@ public class Employee {
     // and should only be called as part of the larger task of:
     private void meetWithHrForBenefitAndSalryInfo() {
         metWithHr = true;
-        System.out.println(firstName + " " + lastName + " met with Hr on "
-            + getFormattedDate());
+        String msg = firstName + " " + lastName + " met with Hr on "
+            + getFormattedDate();
+        reportService.doOutput(msg);
     }
 
     // Assume this must be performed first, and assume that an employee
@@ -100,8 +104,9 @@ public class Employee {
     // doFirtTimeOrientation()
     private void meetDepartmentStaff() {
         metDeptStaff = true;
-        System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
-            + getFormattedDate());
+        String msg = firstName + " " + lastName + " met with Dept. Staff on "
+            + getFormattedDate();
+        reportService.doOutput(msg);
     }
 
     // Assume this must be performed third. And assume that because department
@@ -109,8 +114,9 @@ public class Employee {
     // independently from other classes.
     public void reviewDeptPolicies() {
         reviewedDeptPolicies = true;
-        System.out.println(firstName + " " + lastName + " reviewed Dept policies on "
-            + getFormattedDate());
+        String msg = firstName + " " + lastName + " reviewed Dept policies on "
+            + getFormattedDate();
+        reportService.doOutput(msg);
     }
 
     // Assume this must be performed 4th. And assume that because employees
@@ -119,8 +125,9 @@ public class Employee {
     public void moveIntoCubicle(String cubeId) {
         this.cubeId = cubeId;
         this.movedIn = true;
-        System.out.println(firstName + " " + lastName + " moved into cubicle "
-                + cubeId + " on " + getFormattedDate());
+        String msg = firstName + " " + lastName + " moved into cubicle "
+                + cubeId + " on " + getFormattedDate();
+        reportService.doOutput(msg);
     }
 
     public String getFirstName() {
