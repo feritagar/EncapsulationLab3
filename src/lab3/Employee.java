@@ -151,7 +151,8 @@ public class Employee {
 
     public void setLastName(String lastName) {
         if(lastName == null || lastName.isEmpty()) {
-            System.out.println("last name is required");
+            String msg ="last name is required";
+            reportService.doOutput(msg);
         }
         this.lastName = lastName;
     }
@@ -162,8 +163,9 @@ public class Employee {
 
     public void setSsn(String ssn) {
         if(ssn == null || ssn.length() < 9 || ssn.length() > 11) {
-            System.out.println("ssn is required and must be "
-                    + "between 9 and 11 characters (if hyphens are used)");
+            String msg ="ssn is required and must be "
+                    + "between 9 and 11 characters (if hyphens are used)";
+            reportService.doOutput(msg);
         }
         this.ssn = ssn;
     }
@@ -208,7 +210,8 @@ public class Employee {
     
     public void setCubeId(String cubeId) {
         if(cubeId == null || cubeId.isEmpty()) {
-            System.out.println("cube id is required");
+            String msg ="cube id is required";
+            reportService.doOutput(msg);
         }
         this.cubeId = cubeId;
     }
@@ -219,7 +222,8 @@ public class Employee {
 
     public void setOrientationDate(Date orientationDate) {
         if(orientationDate == null) {
-            System.out.println("orientationDate is required");
+            String msg ="orientationDate is required";
+            reportService.doOutput(msg);
         }
         this.orientationDate = orientationDate;
     }
