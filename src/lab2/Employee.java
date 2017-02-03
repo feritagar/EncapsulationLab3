@@ -32,33 +32,36 @@ public class Employee {
     
     public void hiringProcess(){
         this.meetWithHrForBenefitAndSalryInfo();
+        this.meetDepartmentStaff();
+        this.reviewDeptPolicies();
+        this.moveIntoCubicle(cubeId);
+        
         
     }
-
+    
     public Employee(String firstName, String lastName, String ssn) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ssn = ssn;
     }
-    
+       
     public String getFormattedDate(){
         SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        return sdf.format(orientationDate);        
-        
+        return sdf.format(orientationDate);
     }
 
     // Assume this must be performed first, and assume that an employee
     // would only do this once, upon being hired.
-    public void meetWithHrForBenefitAndSalryInfo() {
+    private void meetWithHrForBenefitAndSalryInfo() {
         metWithHr = true;
         
     }
 
     // Assume this must be performed second, and assume that an employee
     // would only do this once, upon being hired.:
-    public void meetDepartmentStaff() {
+    private void meetDepartmentStaff() {
         metDeptStaff = true;
-        
+                
         System.out.println(firstName + " " + lastName + " met with Dept. Staff on "
             + getFormattedDate());
     }
@@ -79,10 +82,9 @@ public class Employee {
     public void moveIntoCubicle(String cubeId) {
         this.cubeId = cubeId;
         this.movedIn = true;
-        SimpleDateFormat sdf = new SimpleDateFormat("M/d/yyyy");
-        String fmtDate = sdf.format(orientationDate);        
+                
         System.out.println(firstName + " " + lastName + " moved into cubicle "
-                + cubeId + " on " + fmtDate);
+                + cubeId + " on " + getFormattedDate());
     }
 
     public String getFirstName() {
@@ -94,7 +96,7 @@ public class Employee {
     
     public void setFirstName(String firstName) {
         if(firstName == null || firstName.length()<2){
-            System.out.println("Invalid information");
+            System.out.println("Invalid Information");
         }
        this.firstName = firstName;
     }
@@ -105,7 +107,7 @@ public class Employee {
 
     public void setLastName(String lastName) {
         if(lastName == null || lastName.length()<2){
-            System.out.println("Invalid information");
+            System.out.println("Invalid Informatian");
         }
        this.lastName = lastName;
     }
@@ -116,7 +118,7 @@ public class Employee {
 
     public void setSsn(String ssn) {
         if(ssn == null || ssn.length()<9){
-            System.out.println("Invalid information");
+            System.out.println("Invalid SSN Number! Enter your 9 digit SSN");
         }
         this.ssn = ssn;
     }
@@ -160,6 +162,9 @@ public class Employee {
 
     
     public void setCubeId(String cubeId) {
+        if(cubeId == null || cubeId.length()<5 || cubeId.length()>5){
+            System.out.println("Invalid ID Number.ID Numder must be 5 digit");
+        }
         this.cubeId = cubeId;
     }
 
@@ -168,5 +173,8 @@ public class Employee {
     }
 
     public void setOrientationDate(Date orientationDate) {
+        if(orientationDate == null){
+            System.out.println("Enter date in M/d/yyyy format!");
+        }
         this.orientationDate = orientationDate;
     }}
