@@ -40,6 +40,9 @@ public class Employee {
     }
     
     public Employee(String firstName, String lastName, String ssn) {
+        //setFirstName(firstName);
+        //setLastName(lastName);
+        //setSsn(ssn);
         this.firstName = firstName;
         this.lastName = lastName;
         this.ssn = ssn;
