@@ -30,11 +30,11 @@ public class Employee {
     private String cubeId;
     private Date orientationDate;
     
-    public void hiringProcess(){
-        this.meetWithHrForBenefitAndSalryInfo();
-        this.meetDepartmentStaff();
-        this.reviewDeptPolicies();
-        this.moveIntoCubicle(cubeId);
+    public void hiringProcess(String cubeId){
+        meetWithHrForBenefitAndSalryInfo();
+        meetDepartmentStaff();
+        reviewDeptPolicies();
+        moveIntoCubicle(cubeId);
         
         
     }
